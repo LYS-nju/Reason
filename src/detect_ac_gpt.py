@@ -38,12 +38,6 @@ def reason(solidity_source_code):
     result += f"\ntemperature: {config.temperature}"
     result += f"\ntop_p: {config.top_p}"
 
-    matches = re.findall(
-        r'\{Function\s*:\s*(.+?),\s*Vulnerability Description\s*:\s*(.+?)\}', 
-        result,
-        flags=re.DOTALL
-    )
-
     print(result)
 
 if __name__ == "__main__":

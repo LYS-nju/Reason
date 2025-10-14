@@ -1,7 +1,7 @@
 import re
 import argparse
 import os
-
+import shutil
 
 def remove_comments_and_empty_lines(sol_code):
     without_comments = re.sub(r'\/\/.*|\/\*[\s\S]*?\*\/', '', sol_code)
@@ -33,7 +33,18 @@ def process_files(input_dir, output_dir):
                     cleaned_file.write(cleaned_solidity_code)
 
                 print(f"Finish: {input_file_path} -> {output_file_path}")
-
+            
+def copy_config(input_dir, output_dir):
+    for root, dirs, files in os.walk(input_dir):
+        if any(skip in root for skip in ["bin-runtime", "binary"]):
+            continue        
+        for file in files:
+            if file.endswith(".json"):
+                input_file_path = os.path.join(root, file)
+                relative_path = os.path.relpath(input_file_path, input_dir)
+                output_file_path = os.path.join(output_dir, relative_path)
+                shutil.copy2(input_file_path, output_file_path)
+                print(f"Finish: {input_file_path} -> {output_file_path}")
 
 if __name__ == "__main__":
 
@@ -47,3 +58,4 @@ if __name__ == "__main__":
         print(f"No exist")
     else:
         process_files(args.input_dir, args.output_dir)
+        copy_config(args.input_dir, args.output_dir)

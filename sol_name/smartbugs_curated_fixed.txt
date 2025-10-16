@@ -1,0 +1,12 @@
+arbitrary_location_write_simple_fixed.sol
+incorrect_constructor_name_fixed.sol
+mapping_write_fixed.sol
+multiowned_vulnerable_fixed.sol
+mycontract_fixed_fixed.sol
+phishable_fixed.sol
+rubixi_fixed.sol
+simple_suicide_fixed.sol
+unprotected0_fixed.sol
+wallet_02_refund_nosub_fixed.sol
+wallet_03_wrong_constructor_fixed.sol
+wallet_04_confused_sign_fixed.sol

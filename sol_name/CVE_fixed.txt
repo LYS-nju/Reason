@@ -1,0 +1,15 @@
+CVE-2018-10666_fixed.sol
+CVE-2018-10705_fixed.sol
+CVE-2018-11329_fixed.sol
+CVE-2018-19830_fixed.sol
+CVE-2018-19831_fixed.sol
+CVE-2018-19832_fixed.sol
+CVE-2018-19833_fixed.sol
+CVE-2018-19834_fixed.sol
+CVE-2019-15078_fixed.sol
+CVE-2019-15079_fixed.sol
+CVE-2019-15080_fixed.sol
+CVE-2020-17753_fixed.sol
+CVE-2020-35962_fixed.sol
+CVE-2021-34272_fixed.sol
+CVE-2021-34273_fixed.sol

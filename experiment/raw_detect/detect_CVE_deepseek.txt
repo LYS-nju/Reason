@@ -1,0 +1,127 @@
+nohup: ignoring input
+The 1 Line: CVE-2018-10666.sol
+{Function: setOwner, Vulnerability Description: The setOwner function in the Owned contract lacks access control, allowing any address to change the owner, which could lead to unauthorized control over owner-restricted functions.}
+
+temperature: 0
+top_p: 0.9
+total time: 38.93698859214783
+total token: 2618
+==========End===========
+The 2 Line: CVE-2018-10705.sol
+{Function: setOwner, Vulnerability Description: The setOwner function in the Owned contract lacks the onlyOwner modifier, allowing any caller to change the contract owner, which is a critical access control vulnerability.}
+
+temperature: 0
+top_p: 0.9
+total time: 63.907268047332764
+total token: 2440
+==========End===========
+The 3 Line: CVE-2018-11329.sol
+{Function: DrugDealer, Vulnerability Description: This public function allows any user to set the ceoAddress, enabling unauthorized takeover of CEO privileges and potential fund theft or contract manipulation.}
+
+{Function: seedMarket, Vulnerability Description: No access control restriction, allowing any user to initialize the contract, which should be restricted to the deployer or authorized entity to prevent unintended initialization.}
+
+temperature: 0
+top_p: 0.9
+total time: 78.54619479179382
+total token: 3145
+==========End===========
+The 4 Line: CVE-2018-19830.sol
+{Function: UBSexToken, Vulnerability Description: The function is misnamed and does not match the contract name (BAFCToken), so it is not recognized as the constructor in Solidity 0.4.24. This allows any caller to execute the function after deployment, setting themselves as the owner, resetting totalSupply, and assigning all tokens to themselves, compromising the contract's access control.}
+
+temperature: 0
+top_p: 0.9
+total time: 108.12972497940063
+total token: 3726
+==========End===========
+The 5 Line: CVE-2018-19831.sol
+{Function: ToOwner, Vulnerability Description: This function is public and unrestricted, allowing any user to set themselves as the owner and assign themselves the entire token supply, leading to complete loss of access control.}
+
+{Function: Mining24, Vulnerability Description: This function is public and unrestricted, allowing any user to change the owner, modify critical parameters (value and minReq), and alter balances, resulting in unauthorized access and control over the contract.}
+
+temperature: 0
+top_p: 0.9
+total time: 64.59609794616699
+total token: 3692
+==========End===========
+The 6 Line: CVE-2018-19832.sol
+{No Access Control Vulnerabilities}
+
+temperature: 0
+top_p: 0.9
+total time: 121.18305253982544
+total token: 4482
+==========End===========
+The 7 Line: CVE-2018-19833.sol
+{Function: owned, Vulnerability Description: The 'owned' function is public and allows any user to set themselves as the owner, bypassing access control and potentially allowing unauthorized ownership takeover.}
+
+temperature: 0
+top_p: 0.9
+total time: 32.91284418106079
+total token: 1324
+==========End===========
+The 8 Line: CVE-2018-19834.sol
+{Function: quaker, Vulnerability Description: The quaker function is public and allows any caller to set themselves as the owner, overriding the initial ownership set in the constructor and bypassing access control protections. This enables unauthorized users to gain owner privileges and perform restricted actions such as minting or pulling back tokens.}
+
+temperature: 0
+top_p: 0.9
+total time: 76.57418203353882
+total token: 3314
+==========End===========
+The 9 Line: CVE-2019-15078.sol
+{No Access Control Vulnerabilities}
+
+temperature: 0
+top_p: 0.9
+total time: 145.50373816490173
+total token: 4972
+==========End===========
+The 10 Line: CVE-2019-15079.sol
+{Function: EAI_TokenERC20, Vulnerability Description: The function is misnamed and publicly accessible, allowing any user to call it and reinitialize the token supply, minting all tokens to themselves and changing token metadata, due to the constructor not being properly defined in Solidity < 0.4.22.}
+
+temperature: 0
+top_p: 0.9
+total time: 60.696850061416626
+total token: 1994
+==========End===========
+The 11 Line: CVE-2019-15080.sol
+{Function: owned, Vulnerability Description: The function is publicly accessible and allows any caller to set themselves as the owner, bypassing intended access controls and enabling unauthorized takeover of the contract.}
+
+temperature: 0
+top_p: 0.9
+total time: 111.97006130218506
+total token: 3769
+==========End===========
+The 12 Line: CVE-2020-17753.sol
+{Function: addMeByRC, Vulnerability Description: The function uses tx.origin for authorization instead of a proper access control modifier like onlyOwner. This could allow unauthorized contracts to be registered as RC (Reserved Contract) if the owner is tricked into interacting with a malicious contract, as tx.origin refers to the original transaction sender and can be exploited in phishing-like attacks. This bypasses intended access controls and could enable unauthorized calls to buyFromRC and claim functions.}
+
+temperature: 0
+top_p: 0.9
+total time: 159.19290208816528
+total token: 7158
+==========End===========
+The 13 Line: CVE-2020-35962.sol
+{Function: fundDAO, Vulnerability Description: No access control modifier; can be called by any user, allowing unauthorized triggering of DAO fund distribution and token burning.}
+
+{Function: sellTokenForLRC, Vulnerability Description: No access control modifier; can be called by any user with any amount, potentially draining the contract's tokens or ETH to the seller address without authorization.}
+
+temperature: 0
+top_p: 0.9
+total time: 142.00390720367432
+total token: 6199
+==========End===========
+The 14 Line: CVE-2021-34272.sol
+{Function: owned, Vulnerability Description: The function is publicly accessible and allows any caller to set themselves as the owner, bypassing intended access controls and compromising all owner-restricted functions in the contract.}
+
+temperature: 0
+top_p: 0.9
+total time: 91.84470987319946
+total token: 3447
+==========End===========
+The 15 Line: CVE-2021-34273.sol
+{Function: owned, Vulnerability Description: The public function 'owned' allows any caller to set themselves as the owner, compromising the access control mechanism and enabling unauthorized ownership transfers.}
+
+temperature: 0
+top_p: 0.9
+total time: 83.7549192905426
+total token: 2726
+==========End===========

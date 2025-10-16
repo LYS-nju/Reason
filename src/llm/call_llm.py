@@ -17,7 +17,7 @@ def call_gpt(messages) -> list:
     return res.choices[0].message.content
 
 
-def call_r1(messages) -> tuple[str, str]:
+def call_deepseek(messages) -> tuple[str, str]:
     
     client = OpenAI(
         base_url=config.deepseek_url,
@@ -28,4 +28,5 @@ def call_r1(messages) -> tuple[str, str]:
                                          temperature=config.temperature,
                                          top_p=config.top_p,
                                          n=1, stop=None)
+    config.total_token += res.usage.total_tokens
     return res.choices[0].message.reasoning_content, res.choices[0].message.content

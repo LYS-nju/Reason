@@ -1,0 +1,33 @@
+- Name: Ether transfer
+  Situation: Ether transfer operations, transfer(), send() and call()
+  Suggestion: Consider the context and focus on potential access control vulnerabilities rather than reentrancy issues
+
+- Name: Fallback
+  Situation: The contract's fallback function
+  Suggestion: Carefully consider any subsequent operations triggered by Ether transfers in the fallback function
+
+- Name: Selfdestruct
+  Situation: Use of the selfdestruct(address) or suicide(address) instruction
+  Suggestion: Ensure only the contract owner can execute self-destruction and verify proper access control.
+
+- Name: Low-level Call
+  Situation: call(), delegatecall() and staticcall()
+  Suggestion: Carefully assess the context of these calls and determine if access restrictions are needed, as they are critical operations.
+
+- Name: Hypothesis
+  Suggestion: Avoid making hypothetical or unsupported assumptions at any time.
+
+# - Name: Gas Opti
+#   Match: "Use of arrays, mappings and low-level calls."
+#   Description: "Reasoning toward gas-related issue."
+#   Suggestion: "Assess the upper bound of gas usage in smart contract."
+
+# - Name: Critical Operations
+#   Match: "The function includes critical operations that may lead to access control vulnerabilty."
+#   Description: "Reasoning toward access control vulnerability."
+#   Suggestion: "If access control vulnerability is suspected, carefully analyze whether there exists any path that can bypass the intended access control mechanisms."
+
+# - Name: Arithmetic
+#   Situation: "Outdated compiler versions and arithmetic operations (e.g., +, -, *, /)."
+#   Description: "Reasoning toward arithmetic vulnerability, such as integer overflow/underflow."
+#   Suggestion: "Check whether proper overflow protection mechanisms are implemented."

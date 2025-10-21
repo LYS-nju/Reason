@@ -13,7 +13,7 @@ def call_gpt(messages) -> list:
                                          temperature=config.temperature,
                                          top_p=config.top_p,
                                          n=1, stop=None)
-
+    config.total_token += res.usage.total_tokens
     return res.choices[0].message.content
 
 

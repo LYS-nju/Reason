@@ -19,6 +19,7 @@ class SuggestionAgentR1():
             - Name: The rule's name
             - Situation: Relevant code snippet
             - Suggestion: Specific suggestions for detecting access control vulnerabilities in smart contracts.
+            - Few-shot (may exist)
         Next, follow these steps.
         Step 1: **Learn From Rules**: Carefully learn and understand each rule.
         Step 2: **Analyze and Match**: Analyze the source code and identify code snippets that match any of the rules.

@@ -19,6 +19,7 @@
 2022-05-rubicon/RubiconMarket.sol
 2022-06-yieldy/Yieldy.sol
 2022-08-mimo/MIMOAutoAction.sol
+2022-08-mimo/MIMOManagedAction.sol
 2022-08-mimo/MIMOProxy.sol
 2022-08-mimo/MIMOProxyFactory.sol
 2022-09-quickswap/AlgebraPool.sol
@@ -39,7 +40,7 @@
 2023-07-lens/FollowNFT.sol
 2023-07-lens/LensHandles.sol
 2023-08-verwa/LendingLedger.sol
-2023-09-asymmetry/VotiumStrategyCore.sol
+2023-09-asymmetry/AfEth.sol
 2023-09-centrifuge/InvestmentManager.sol
 2023-09-delegate/DelegateToken.sol
 2023-09-maia/RootPort.sol
@@ -69,7 +70,5 @@ fixed-term-loan/MapleLoan.sol
 pt-v5-draw-auction/RngRelayAuction.sol
 pt-v5-prize-pool/PrizePool.sol
 pt-v5-vault/Vault.sol
-sofa-protocol/Automator.sol
 quest-protocol/RabbitHoleReceipt.sol
 quest-protocol/RabbitHoleTickets.sol
-tap-token-audit/TwTAP.sol

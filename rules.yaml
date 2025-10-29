@@ -1,10 +1,28 @@
 - Name: Ether transfer
   Situation: Ether transfer operations, transfer(), send() and call()
-  Suggestion: Consider the context and focus on potential access control vulnerabilities rather than reentrancy issues
+  Suggestion: Ether transfers are considered AC risks only if unauthorized users can trigger them and affect critical state; protected transfers are safe.
+  Few-shot:
+    Code: Checks balance and contract state before transferring Ether.
+    Reason: Transfer is guarded by business logic and access control, not an access control vulnerability.
+    Code: Transfers Ether to an external address without any access control.
+    Reason: Unrestricted external call, could be a potential access control vulnerability.
 
 - Name: Fallback
   Situation: The contract's fallback function
-  Suggestion: Carefully consider any subsequent operations triggered by Ether transfers in the fallback function
+  Suggestion: Fallback functions are considered risky only if they perform meaningful operations (state changes or external calls). Empty, event-only, or always-reverting functions do not introduce access control vulnerabilities.
+  Few-shot:
+    Code: |
+      fallback() external payable {
+        balances[msg.sender] += msg.value;
+        externalContract.call("");
+      }
+    Reason: Modifies state and calls external contracts without access control, creating potential vulnerability.
+    Code: |
+      fallback() external payable {
+        emit Deposit(msg.sender, msg.value);
+        revert("Direct payment not allowed");
+      }
+    Reason: Reverts immediately or only emits events, thus does not introduce access control vulnerabilities.
 
 - Name: Selfdestruct
   Situation: Use of the selfdestruct(address) or suicide(address) instruction
@@ -13,6 +31,54 @@
 - Name: Low-level Call
   Situation: call(), delegatecall() and staticcall()
   Suggestion: Carefully assess the context of these calls and determine if access restrictions are needed, as they are critical operations.
+
+- Name: Misclassification of Constructor
+  Situation: Any function that might be a constructor
+  Suggestion: Carefully distinguish constructors from regular functions by considering the Solidity version, function name, and capitalization conventions.
+
+- Name: Tx.origin
+  Situation: Any place where tx.origin is used
+  Suggestion: The tx.origin can be spoofed; any usage should be carefully evaluated for security implications.
+
+- Name: Variable Initialization
+  Situation: State variable is not initialized.
+  Suggestion: Do not associate variable initialization issues with access control vulnerabilities.
+
+- Name: Standard Token Management
+  Few-shot:
+    Code: |
+      function transfer(address recipient, uint256 amount) external returns (bool) {
+        require(_balances[msg.sender] >= amount);
+        _balances[msg.sender] -= amount;
+        _balances[recipient] += amount;
+        return true;
+      }
+      function allowance(address owner, address spender) external view returns (uint256) {
+        return _allowances[owner][spender];
+      }
+      function approve(address spender, uint256 amount) external returns (bool) {
+        _allowances[msg.sender][spender] = amount;
+        return true;
+      }
+      function transferFrom(address sender, address recipient, uint256 amount) external returns (bool) {
+        require(_balances[sender] >= amount);
+        require(_allowances[sender][msg.sender] >= amount);
+        _balances[sender] -= amount;
+        _balances[recipient] += amount;
+        _allowances[sender][msg.sender] -= amount;
+        return true;
+      }
+      function mint(address account, uint256 amount) external onlyOwner {
+        require(msg.sender == owner)
+        _totalSupply += amount;
+        _balances[account] += amount;
+      }
+      function burn(uint256 amount) external {
+        require(_balances[msg.sender] >= amount);
+        _balances[msg.sender] -= amount;
+        _totalSupply -= amount;
+      }
+    Reason: This is Standard token management; do not consider it an access control vulnerabilities.
 
 - Name: Hypothesis
   Suggestion: Avoid making hypothetical or unsupported assumptions at any time.

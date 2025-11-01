@@ -13,6 +13,8 @@ if __name__ == "__main__":
         rules = load_rules()
         suggestion_agent = SuggestionAgentR1(solidity_source_code, rules)
         suggestions = suggestion_agent.reason()
+        # print("[Suggestions]")
+        print(suggestions)
         detect_agent = DetectAgentR1(solidity_source_code, suggestions)
         vulnerability_reports = detect_agent.reason()
 
